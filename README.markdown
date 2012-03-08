@@ -30,6 +30,12 @@ To install these gems do
 Server
 ------
     $ thin start -R config.ru -d -p 4567
+    
+Use Caphook
+-----------
+Now you're able to deploy your project with HTTP calls
+
+    GET /deploy
 
 Credits
 -------
