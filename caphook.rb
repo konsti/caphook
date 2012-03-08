@@ -6,6 +6,10 @@ require 'fileutils'
 require 'open4'
 require 'escape'
 
+get '/' do
+  'Hello'
+end
+
 get '/deploy' do
   config = YAML.load_file('config.yml')
   begin
