@@ -7,3 +7,7 @@ Installation
 ------------
 
 (work in progress)
+
+Credits
+-------
+ * Mat Brown (https://github.com/outoftime/clickistrano) for the code to run a shell command
