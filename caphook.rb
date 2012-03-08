@@ -12,6 +12,7 @@ end
 
 get '/deploy' do
   config = YAML.load_file('config.yml')
+  status = "None"
   begin
     FileUtils.cd(config['deploy_folder']) do
       FileUtils.rm(config['log_file']) if File.exist?(config['log_file'])
@@ -24,14 +25,15 @@ get '/deploy' do
         end
       end
       if status == 0
-        "Success"
+        status = "Success"
       else
         File.open(config['log_file'], 'a') do |file|
           file.puts("capistrano exited with status #{status}")
         end
-        "Failed"
+        status = "Failed"
       end
     end
+    status
   rescue Exception => e
     File.open(config['log_file'], 'a') do |file|
       file.puts("#{e.class.name}: #{e.message}")
