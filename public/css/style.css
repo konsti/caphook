@@ -1,0 +1,10 @@
+td.date {
+  font-size: 14px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+#log h1 {
+  float: left;
+  margin-right: 15px;
+}

@@ -12,8 +12,10 @@ GEM
     daemons (1.1.8)
     escape (0.0.4)
     eventmachine (0.12.10)
+    excon (0.13.4)
     foreman (0.46.0)
       thor (>= 0.13.6)
+    haml (3.1.4)
     highline (1.6.11)
     i18n (0.6.0)
     json (1.7.0)
@@ -51,7 +53,9 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   escape
+  excon
   foreman
+  haml
   json
   open4
   riak-client

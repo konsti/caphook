@@ -1,0 +1,20 @@
+%section#logs
+  .page-header
+    %h1
+      Logfiles
+      %small List of available Logs of Capistrano deployment runs
+  .row-fluid
+    .span6
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Date
+            %th Actions
+        %tbody
+          - @objects.each do |object|
+            %tr
+              %td.date= object[:last_modified].strftime('%Y-%m-%d %H:%M:%S')
+              %td
+                %a.btn.btn-primary{:href => "/log/#{object[:key]}"} Open
+                %a.btn.btn-danger{:href => "/log/delete/#{object[:key]}"} Delete
+      
