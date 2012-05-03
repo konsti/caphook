@@ -31,7 +31,8 @@ You can also view your log files with
     GET /logs
 
 ## Credits ##
- * Mat Brown (https://github.com/outoftime/clickistrano) for the code to run a shell command
+ * Mat Brown ([https://github.com/outoftime/clickistrano](https://github.com/outoftime/clickistrano)) for the code to run a shell command
  
-## LICENSE ##
-See `LICENSE.txt`
+## License ##
+Caphook is released under the MIT license:
+  [http://www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
