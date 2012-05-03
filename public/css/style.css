@@ -1,8 +1,9 @@
-td.date {
+td.date, td.index, td.user {
   font-size: 14px;
   font-weight: bold;
   vertical-align: middle;
 }
+
 
 #log h1 {
   float: left;

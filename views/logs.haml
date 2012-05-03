@@ -8,12 +8,16 @@
       %table.table.table-striped.table-bordered
         %thead
           %tr
+            %th #
             %th Date
+            %th User
             %th Actions
         %tbody
-          - @objects.each do |object|
+          - @objects.each_with_index do |object, index|
             %tr
+              %td.index= index
               %td.date= object[:last_modified].strftime('%Y-%m-%d %H:%M:%S')
+              %td.user= object[:user].first.capitalize unless object[:user].nil?
               %td
                 %a.btn.btn-primary{:href => "/log/#{object[:key]}"} Open
                 %a.btn.btn-danger{:href => "/log/delete/#{object[:key]}"} Delete

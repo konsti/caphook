@@ -46,6 +46,7 @@ get '/cap/:project' do
     status = "None"
     log = Riak::RObject.new(settings.bucket)
     log.content_type = "text/plain"
+    log.meta['user'] = params['user'] if params.has_key?('user')
     log.data = ""
     begin
       FileUtils.cd(config['projects'][params[:project]]) do
@@ -90,6 +91,7 @@ get '/log/:key' do
     object = settings.bucket.get(params[:key])
     @last_modified = object.last_modified
     @code = object.data
+    @user = object.meta['user']
     haml :log
   rescue Riak::HTTPFailedRequest => e
     "Couldn't find some log files for this key."
@@ -101,7 +103,7 @@ get '/logs' do
   keys = settings.bucket.keys
   keys.each do |key|
     object = settings.bucket.get(key)
-    @objects.push({last_modified: object.last_modified, key: key})
+    @objects.push({last_modified: object.last_modified, key: key, user: object.meta['user']})
   end
   @objects.sort! {|x,y| y[:last_modified] <=> x[:last_modified]}
   haml :logs
