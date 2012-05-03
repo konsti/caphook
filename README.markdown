@@ -9,7 +9,6 @@ Caphook is a simple Sinatra app to execute Capistrano tasks via HTTP calls.
 Create config.yml according to your needs e.g.
 
     deploy_folder: /home/konstantin/project
-    log_file: /home/konstantin/project_deploy.log
     cap_executable: /usr/local/rvm/gems/ruby-1.9.3-p0/bin/cap
 
 ## Dependencies ##
@@ -28,6 +27,10 @@ You can also create a Profile and use foreman (included in the Gemfile)
 Now you're able to deploy your project with HTTP calls
 
     GET /deploy
+    
+You can also view your log files with
+    
+    GET /logs
 
 ## Credits ##
  * Mat Brown (https://github.com/outoftime/clickistrano) for the code to run a shell command
