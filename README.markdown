@@ -1,4 +1,4 @@
-# Caphook # 
+# Caphook
 
 Caphook is a simple Sinatra app to execute Capistrano tasks via HTTP calls.
 
@@ -32,3 +32,6 @@ You can also view your log files with
 
 ## Credits ##
  * Mat Brown (https://github.com/outoftime/clickistrano) for the code to run a shell command
+ 
+## LICENSE ##
+See `LICENSE.txt`
