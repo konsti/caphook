@@ -8,7 +8,7 @@ gem 'thin'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
-gem 'railsless-deploy'
+gem 'railsless-deploy', :require => nil
 
 gem 'escape'
 gem 'json'
