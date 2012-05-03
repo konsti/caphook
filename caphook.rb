@@ -12,7 +12,7 @@ get '/' do
 end
 
 get '/deploy' do
-  config = YAML.load_file('config.yml')
+  config = YAML.load_file('config/caphook.yml')
   status = "None"
   log = Riak::RObject.new(settings.bucket)
   log.content_type = "text/plain"
@@ -37,6 +37,43 @@ get '/deploy' do
     log.store
     log.key
   end  
+end
+
+get '/cap/:project' do
+  config = YAML.load_file('config/caphook.yml')
+  command = params['command']
+  if config['projects'].keys.include?(params[:project]) && config['cap_commands'].include?(command)
+    status = "None"
+    log = Riak::RObject.new(settings.bucket)
+    log.content_type = "text/plain"
+    log.data = ""
+    begin
+      FileUtils.cd(config['projects'][params[:project]]) do
+        status = Open4.popen4(Escape.shell_command([config['cap_executable'],command])) do |pid, stdin, stdout, stderr|
+          until stdout.eof?
+            data = stdout.readline
+            log.data += data
+          end
+          until stderr.eof?
+            data = stderr.readline
+            log.data += data
+          end
+        end
+        if status != 0
+          log.data += "capistrano exited with status #{status}"
+        end
+      end
+      log.store
+      log.key
+    rescue Exception => e
+      log.data += "#{e.class.name}: #{e.message}"
+      log.data += "#{e.backtrace}"
+      log.store
+      log.key
+    end
+  else
+    "Configuration for '#{params[:project]}' missing or command '#{params[:command]}' unkown."
+  end
 end
 
 get '/log/delete/:key' do
