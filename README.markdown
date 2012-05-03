@@ -26,7 +26,8 @@ Now you're able to deploy your project with HTTP calls
 
     GET /cap/{project_name}?command={cap_command_included_in_config}
     
-Optional Params:
+Optional Param:   
+
     user={user_string}
     
 You can also view your log files with
