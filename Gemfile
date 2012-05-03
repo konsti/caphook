@@ -8,6 +8,7 @@ gem 'thin'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
+gem 'railsless-deploy'
 
 gem 'escape'
 gem 'json'

@@ -33,6 +33,7 @@ GEM
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
+    railsless-deploy (1.0.2)
     riak-client (1.0.3)
       beefcake (~> 0.3.7)
       builder (>= 2.1.2)
@@ -63,6 +64,7 @@ DEPENDENCIES
   haml
   json
   open4
+  railsless-deploy
   riak-client
   rvm-capistrano
   sinatra
