@@ -1,4 +1,4 @@
-# Caphook# 
+# Caphook # 
 
 Caphook is a simple Sinatra app to execute Capistrano tasks via HTTP calls.
 
@@ -6,14 +6,15 @@ Caphook is a simple Sinatra app to execute Capistrano tasks via HTTP calls.
 
     $ git clone git@github.com:konsti/caphook.git
     
-Create caphook.yml according to your needs. Look at `caphook.yml.sample` for help.
+ * Create `config/caphook.yml` according to your needs. Look at `config/caphook.yml.sample` for help.
+ * Install Riak with localhost access
+ 
+    $ bundle install
 
 ## Dependencies ##
 
+ * Ruby (> 1.9.3)
  * Riak (> 1.1.2)
- * Bundler to install Gemse
-
-    $ bundle install
 
 ## Server ##
     $ thin start -R config.ru -d -p 4567
