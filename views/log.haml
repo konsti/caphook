@@ -1,7 +1,7 @@
 %section#log
   .page-header
     %h1
-      Capistrano Deploy
+      = "Deploy #{@project.first.capitalize}"
       %small
         = "User #{@user.first.capitalize}" unless @user.nil?
         = "at #{@last_modified.strftime('%Y-%m-%d %H:%M:%S')}"

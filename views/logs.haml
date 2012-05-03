@@ -10,6 +10,7 @@
           %tr
             %th #
             %th Date
+            %th Project
             %th User
             %th Actions
         %tbody
@@ -17,6 +18,7 @@
             %tr
               %td.index= index
               %td.date= object[:last_modified].strftime('%Y-%m-%d %H:%M:%S')
+              %td.project= object[:project].first.capitalize
               %td.user= object[:user].first.capitalize unless object[:user].nil?
               %td
                 %a.btn.btn-primary{:href => "/log/#{object[:key]}"} Open

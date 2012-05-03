@@ -1,4 +1,4 @@
-td.date, td.index, td.user {
+td.date, td.index, td.user, td.project {
   font-size: 14px;
   font-weight: bold;
   vertical-align: middle;

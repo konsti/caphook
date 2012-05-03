@@ -47,6 +47,7 @@ get '/cap/:project' do
     log = Riak::RObject.new(settings.bucket)
     log.content_type = "text/plain"
     log.meta['user'] = params['user'] if params.has_key?('user')
+    log.meta['project'] = params[:project]
     log.data = ""
     begin
       FileUtils.cd(config['projects'][params[:project]]) do
@@ -78,6 +79,12 @@ get '/cap/:project' do
   end
 end
 
+get '/log/delete/all' do
+  settings.bucket.keys.each do |key|
+    settings.bucket.delete(key)
+  end
+end
+
 get '/log/delete/:key' do
   begin
     settings.bucket.delete(params[:key])
@@ -92,6 +99,7 @@ get '/log/:key' do
     object = settings.bucket.get(params[:key])
     @last_modified = object.last_modified
     @code = object.data
+    @project = object.meta['project']
     @user = object.meta['user']
     haml :log
   rescue Riak::HTTPFailedRequest => e
@@ -104,7 +112,7 @@ get '/logs' do
   keys = settings.bucket.keys
   keys.each do |key|
     object = settings.bucket.get(key)
-    @objects.push({last_modified: object.last_modified, key: key, user: object.meta['user']})
+    @objects.push({last_modified: object.last_modified, key: key, project: object.meta['project'], user: object.meta['user']})
   end
   @objects.sort! {|x,y| y[:last_modified] <=> x[:last_modified]}
   haml :logs
