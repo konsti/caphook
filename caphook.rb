@@ -1,10 +1,5 @@
-require 'rubygems'
-require 'sinatra'
-require 'json'
-require 'yaml'
-require 'fileutils'
-require 'open4'
-require 'escape'
+require "bundler/setup"
+Bundler.require(:default)
 
 get '/' do
   'Hello'
