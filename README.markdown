@@ -2,7 +2,7 @@
 
 Caphook is a simple Sinatra app to execute Capistrano tasks via HTTP calls.
 
-## Installation ##
+## Installation
 
     $ git clone git@github.com:konsti/caphook.git
     
@@ -11,17 +11,17 @@ Caphook is a simple Sinatra app to execute Capistrano tasks via HTTP calls.
  
     $ bundle install
 
-## Dependencies ##
+## Dependencies
 
  * Ruby (> 1.9.3)
  * Riak (> 1.1.2)
 
-## Server ##
+## Server
     $ thin start -R config.ru -d -p 4567
     
 You can also create a Profile and use foreman (included in the Gemfile)  
   
-## Use Caphook ##
+## Use Caphook
 Now you're able to deploy your project with HTTP calls
 
     GET /cap/{project_name}?command={cap_command_included_in_config}
@@ -34,9 +34,13 @@ You can also view your log files with
     
     GET /logs
 
-## Credits ##
+## TODOs
+
+ * Caphook requires all Capistrano dependencies of the target projects in his Gemfile. This needs to be fixed, so that Caphook loads the target project bundle and calls the 'cap' command correctly. Pull Requests welcomed.
+
+## Credits
  * Mat Brown ([https://github.com/outoftime/clickistrano](https://github.com/outoftime/clickistrano)) for the code to run a shell command
  
-## License ##
+## License
 Caphook is released under the MIT license:   
   [http://www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)

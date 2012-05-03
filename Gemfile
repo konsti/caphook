@@ -6,6 +6,8 @@ gem 'foreman'
 gem 'thin'
 
 gem 'capistrano'
+gem 'capistrano-ext'
+gem 'rvm-capistrano'
 
 gem 'escape'
 gem 'json'

@@ -50,7 +50,8 @@ get '/cap/:project' do
     log.data = ""
     begin
       FileUtils.cd(config['projects'][params[:project]]) do
-        status = Open4.popen4(Escape.shell_command([config['cap_executable'],command])) do |pid, stdin, stdout, stderr|
+        #ENV['BUNDLE_GEMFILE'] = config['projects'][params[:project]] + '/Gemfile'
+        status = Open4.popen4(Escape.shell_command([config['cap_executable'].split(' '),command.split(' ')].flatten)) do |pid, stdin, stdout, stderr|
           until stdout.eof?
             data = stdout.readline
             log.data += data
