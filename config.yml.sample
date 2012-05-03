@@ -1,0 +1,3 @@
+deploy_folder: The capified project folder
+log_file: a log file
+cap_executable: the cap executable
